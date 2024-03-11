@@ -1,7 +1,5 @@
 import logging
 
-from dynamicprompts.generators import RandomPromptGenerator
-from dynamicprompts.generators.magicprompt import MagicPromptGenerator
 from dynamicprompts.sampling_context import SamplingContext
 
 from .sampler import DPAbstractSamplerNode
@@ -11,6 +9,8 @@ logger = logging.getLogger(__name__)
 
 class DPMagicPrompt(DPAbstractSamplerNode):
     def __init__(self, *args, **kwargs):
+        from dynamicprompts.generators import RandomPromptGenerator
+        from dynamicprompts.generators.magicprompt import MagicPromptGenerator
         super().__init__(*args, **kwargs)
         self._random_generator = RandomPromptGenerator(
             wildcard_manager=self._wildcard_manager,
